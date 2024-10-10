@@ -1,6 +1,7 @@
 import AppLayout from "../components/Layout";
 import AppCard from "../components/Cards";
 import React from "react";
+import { useState } from "react";
 
 // create-react-app
 // class base component
@@ -33,25 +34,34 @@ import React from "react";
 // }
 
 
-class Dashboard extends React.Component{
-    constructor(){
-        super()
-    }
+// class Dashboard extends React.Component{
+//     constructor(){
+//         super()
+//         this.state = {
+//             data: {}
+//         }
+//     }
 
-    getData() {
-        fetch('https://fakestoreapi.com/products/1')
-            .then(res=>res.json())
-            .then(json=>console.log(json))
-    }
+//     getData() {
+//         fetch('https://fakestoreapi.com/products/1')
+//             .then(res=>res.json())
+//             .then(json=> this.setState({ data: json }))
+//     }
 
-    render(){
-        this.getData();
-        return(
-            <div>
-            </div>
-        )
-    }
-}
+//     componentDidMount(){
+//         this.getData();
+//     }
+
+//     render(){
+//         console.log("state ---- ",this.state);
+//         return(
+//             <div>
+//                 <h1>Print Data from API</h1>
+//                 <h2>{this.state.data.title}</h2>
+//             </div>
+//         )
+//     }
+// }
 
 
 
@@ -69,4 +79,21 @@ class Dashboard extends React.Component{
 //         </div>
 //     )
 // }
+
+
+// Hooks State in Function base component
+function Dashboard(){
+    // console.log("useState", useState());
+
+    // Destructuring 
+    const [counter, setCounter] = useState(0);
+    // console.log("counter ", counter);
+    // console.log("setCounter ", setCounter);
+    return(
+        <div>
+            <h1>{counter}</h1>
+            <button onClick={() => setCounter(counter + 1)}>Increment</button>
+        </div>
+    )
+}
 export default Dashboard;
